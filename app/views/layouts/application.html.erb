@@ -11,19 +11,35 @@
   </head>
 
   <body >
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
-
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+            <span>Bookers</span>
+          </a>
+          <button class="navbar-toggler" type="button" date-target="collapse" date-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to 'Books', books_path %>
+            </li>
+            <li>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "Signup", new_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to "Login", new_user_session_path %>
+            </li>
+            <% end %>
+          </div>
+          </div>
+        </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
