@@ -11,12 +11,11 @@ class BooksController < ApplicationController
 
   def index
     @book = Book.new
-    
+    @books = Book.all
   end
 
   def show
     @book = Book.find(params[:id])
-    @book = Book.all
   end
 
   def destroy
@@ -25,7 +24,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:image, :title, :body)
   end
 
 end
