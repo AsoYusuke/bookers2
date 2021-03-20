@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <%= render 'books/form', books: @books %>
+
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+        <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </table>
+        <tbody>
+          <tr>
+            <td>
+            <%= attachment_image_tag @bookdetail.user, :profile_image, size: "60x60", format:'jpeg', fallback: "no_image.jpg" %>
+				    <%= link_to @bookdetail.user.name, user_path(@bookdetail.user.id) %>
+				    </td>
+				    <td>
+				    <%= link_to @bookdetail.title, book_path(@bookdetail.id) %>
+				    </td>
+				    <td>
+				    <%= @bookdetail.body %>
+				    </td>
+  				  <% if @bookdetail.user_id == current_user.id %>
+  				    <th><%= link_to "Edit", edit_book_path(@bookdetail.id), class: "btn-sm btn-success edit_book_#{@bookdetail.id}" %></th>
+  				    <th><%= link_to "Destroy", book_path(@bookdetail.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-sm btn-danger destroy_book_#{@bookdetail.id}" %></th>
+            <% end %>
+          </tr>
+        </tbody>
+    </div>
+  </div>
+</div>
