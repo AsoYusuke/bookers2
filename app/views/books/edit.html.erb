@@ -1,5 +1,20 @@
 <div class="container">
   <div class="row">
-    <%= render 'books/form', books: @books %>
+    <div class="mx-auto mt-4">
+      <h1>Editing Book</h1>
+      
+      <%= form_for(@book) do |f| %>
+        <p>Title</p>
+        <%= f.text_field :title %>
+
+        <p>Opinion</p>
+        <%= f.text_area :body %><br>
+
+        <%= f.submit 'Update Book' %>
+      <% end %>
+      <%= link_to "Show", book_path(@book.id),:style => "color:black" %>
+|
+      <%= link_to "Back", books_path,:style => "color:black" %>
+    </div>
   </div>
 </div
